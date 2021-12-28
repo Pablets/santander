@@ -40,12 +40,13 @@ function Search({ addToResident, notifyError }) {
 			studentValidated = checkValidity(date, filteredStudent?.validityDate);
 		}
 
-		if (!filteredStudent?.length) {
-			notifyError(`Sorry, ${name}'s validity has Expired!`);
+		if (!filteredStudent) {
+			notifyError(`Sorry, ${name} is not a verified student!`);
+			return;
 		}
 
 		if (!studentValidated) {
-			notifyError(`Sorry, ${name}'s is not a verified student!`);
+			notifyError(`Sorry, ${name}'s validity has Expired!`);
 		}
 
 		if (filteredStudent && studentValidated) {
