@@ -1,4 +1,5 @@
 import React from 'react';
+import Item from '../atoms/Item';
 
 function ResidentsList({ residents }) {
 	return (
@@ -6,9 +7,7 @@ function ResidentsList({ residents }) {
 			<div className="font-weight-bold text-center">Residents List</div>
 			<ul className="mt-10 styled w-50 mx-auto" data-testid="residentsNameList">
 				{residents.map((resident, index) => (
-					<li key={'item' + index} className="slide-up-fade-in">
-						{resident.name}
-					</li>
+					<Item key={'item' + index} value={resident.name} />
 				))}
 			</ul>
 		</div>

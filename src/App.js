@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import ResidentsList from './Components/ResidentsList';
-import Search from './Components/Search';
-import Error from './Components/Error';
+import ResidentsList from './Components/molecules/ResidentsList';
+import Search from './Components/molecules/Search';
+import Error from './Components/molecules/Error';
 import 'h8k-components';
 
 const title = 'Hacker Dormitory';
@@ -17,10 +17,6 @@ function App() {
 	const notifyError = (msg) => {
 		setError(msg);
 	};
-
-	React.useEffect(() => {
-		console.log(residents);
-	}, [residents, error]);
 
 	return (
 		<div className="App">
