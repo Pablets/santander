@@ -3,6 +3,7 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Label from '../atoms/Label';
 import { checkValidity, validateName } from '../lib/validators';
+import InputWithLabel from './InputWithLabel';
 // `joiningDate` && `validityDate` format "yyyy-mm-dd"
 
 function Search({ addToResident, notifyError }) {
@@ -53,24 +54,20 @@ function Search({ addToResident, notifyError }) {
 			onSubmit={submitHandler}
 			className="my-50 layout-row align-items-end justify-content-end"
 		>
-			<Label labelText={'Student Name:'} labelFor={'studentName'}>
-				<Input
-					id={'studentName'}
-					testid={'studentName'}
-					type={'text'}
-					value={name}
-					callback={handleChange}
-				/>
-			</Label>
-			<Label labelText={'Joining Date:'} labelFor={'joiningDate'}>
-				<Input
-					id={'joiningDate'}
-					testid={'joiningDate'}
-					type={'date'}
-					value={date}
-					callback={handleChange}
-				/>
-			</Label>
+			<InputWithLabel
+				labelText={'Student Name:'}
+				id={'studentName'}
+				type={'text'}
+				value={name}
+				callback={handleChange}
+			/>
+			<InputWithLabel
+				labelText={'Joining Date:'}
+				id={'joiningDate'}
+				type={'date'}
+				value={date}
+				callback={handleChange}
+			/>
 			<Button isDisabled={isDisabled} />
 		</form>
 	);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ isDisabled, text = 'Add', type = 'submit' }) => {
+const Button = ({ isDisabled = true, text = 'Add', type = 'submit' }) => {
 	return (
 		<button
 			disabled={isDisabled}

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import ResidentsList from './Components/molecules/ResidentsList';
 import Search from './Components/molecules/Search';
-import Error from './Components/molecules/Error';
+import Error from './Components/atoms/Error';
 import 'h8k-components';
 
 const title = 'Hacker Dormitory';

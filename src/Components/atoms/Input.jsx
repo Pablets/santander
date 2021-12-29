@@ -2,7 +2,6 @@ import React from 'react';
 
 const Input = ({
 	id = '',
-	testid = '',
 	type = '',
 	value = '',
 	className = 'mr-30 mt-10',
@@ -11,7 +10,7 @@ const Input = ({
 	return (
 		<input
 			id={id}
-			data-testid={testid}
+			data-testid={id}
 			type={type}
 			value={value}
 			className={className}
