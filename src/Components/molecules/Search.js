@@ -1,12 +1,10 @@
 import React from 'react';
 import Button from '../atoms/Button';
-import Input from '../atoms/Input';
-import Label from '../atoms/Label';
 import { checkValidity, validateName } from '../lib/validators';
 import InputWithLabel from './InputWithLabel';
 // `joiningDate` && `validityDate` format "yyyy-mm-dd"
 
-function Search({ addToResident, notifyError }) {
+function Search({ addToResident, handleError }) {
 	const [name, setName] = React.useState('');
 	const [date, setDate] = React.useState('');
 	const [isDisabled, setIsDisabled] = React.useState(true);
@@ -27,12 +25,12 @@ function Search({ addToResident, notifyError }) {
 		const [filteredStudent] = validateName(name);
 
 		if (!filteredStudent) {
-			notifyError(`Sorry, ${name} is not a verified student!`);
+			handleError(`Sorry, ${name} is not a verified student!`);
 		} else {
 			let studentValidated = checkValidity(date, filteredStudent?.validityDate);
 
 			if (!studentValidated) {
-				notifyError(`Sorry, ${name}'s validity has Expired!`);
+				handleError(`Sorry, ${name}'s validity has Expired!`);
 			} else {
 				addToResident(filteredStudent);
 			}
@@ -43,11 +41,17 @@ function Search({ addToResident, notifyError }) {
 		setIsDisabled(true);
 	};
 
+	const resetErrorState = React.useCallback(() => {
+		handleError(null);
+	}, [handleError]);
+
 	React.useEffect(() => {
 		if (name && date) {
 			setIsDisabled(false);
+		} else if (name.length || date.length) {
+			resetErrorState();
 		}
-	}, [name, date]);
+	}, [name, date, resetErrorState]);
 
 	return (
 		<form

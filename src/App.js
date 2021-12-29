@@ -14,7 +14,7 @@ function App() {
 		setResidents([...residents, newResident]);
 	};
 
-	const notifyError = (msg) => {
+	const handleError = (msg) => {
 		setError(msg);
 	};
 
@@ -22,7 +22,7 @@ function App() {
 		<div className="App">
 			<h8k-navbar header={title}></h8k-navbar>
 			<div className="layout-column justify-content-center align-items-center w-50 mx-auto">
-				<Search addToResident={addToResident} notifyError={notifyError} />
+				<Search addToResident={addToResident} handleError={handleError} />
 				{error && <Error msg={error} />}
 				<ResidentsList residents={residents} />
 			</div>
